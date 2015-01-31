@@ -38,7 +38,7 @@
  <!-- Start Document
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <body>
-		<!-- Primary Page Layout
+		<!-- Add Event
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<div class="container" ng-controller="SampleCtrl">
 		    <div class="row">
@@ -48,39 +48,33 @@
 			    
 				    <!-- push a new event into the array -->
 					<form ng-submit="addEvent(name, location, time)">
-						<input type="text" ng-model="name" />
-						<input type="text" ng-model="location" />
-						<input type="text" ng-model="time" />
+						Event Name: <input type="text" ng-model="name" /><br/>
+						Location: <input type="text" ng-model="location" /><br/>
+						Time: <input type="text" ng-model="time" /><br/>
 						<button type="submit">Add Event</button>
 					</form>
 				</div>
 		    </div>
 		</div>
 
-    	<!-- Sample Angular Code
+    	<!-- Display All Events
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	    <div class="container" ng-controller="SampleCtrl">
 	    	<div class="row">
 	    		<div class="one-half column" style="margin-top: 10%">
-					<!-- anything typed in here is magically saved to Firebase! -->
-					<input type="text" ng-model="data.text"/>
-					<!-- all changes from Firebase magically appear here! -->
-					<h4>You said: {{ data.text }}</h4>
 					<ul>
 						<li ng-repeat="event in events">
 							<!-- exit an event -->
-							<input type="text" ng-model="event.text" ng-change="events.$save(event)" />
-
+							Event Name:
+							<input type="text" ng-model="event.name" ng-change="events.$save(event)" /><br/>
+							Location:
+							<input type="text" ng-model="event.location" ng-change="events.$save(event)" /><br/>
+							Time:
+							<input type="text" ng-model="event.time" ng-change="events.$save(event)" /><br/>
 							<!-- delete event -->
-							<button class="button-primary" ng-click="events.$remove(event)"> X </button>
+							<button class="button-primary" ng-click="events.$remove(event)"> Remove Event </button>
 						</li>
 					</ul>
-
-					<!-- push a new event into the array -->
-					<form ng-submit="addEvent(newEventText)">
-						<input type="text" ng-model="newEventText" />
-						<button type="submit">add event</button>
-					</form>
 				</div>
 			</div>
 		</div>
