@@ -1,7 +1,7 @@
 var app = angular.module("sampleApp", ["firebase"]);
 
 app.controller("SampleCtrl", function($scope, $firebase) {
-  var ref = new Firebase("https://<your-firebase>.firebaseio.com/messages");
+  var ref = new Firebase("https://heyScheduleMe.firebaseio.com/messages");
   var sync = $firebase(ref);
   $scope.messages = sync.$asArray();
 
