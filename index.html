@@ -53,42 +53,56 @@
 		<!-- Add Event
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<div class="container" ng-controller="SampleCtrl">
-		    <div class="row">
-			    <div class="one-half column" style="margin-top: 10%">
+			    <div class="one-half column myborder" style="margin-top: 10%">
 			    	<h4>Hey, Schedule Me!</h4>
 			    	<p>[Implement later: Current Time / Date + Location]</p>
 			    
 				    <!-- push a new event into the array -->
+					
 					<form ng-submit="addEvent(name, location, time)">
-						Event Name: <input type="text" ng-model="name" /><br/>
-						Location: <input type="text" ng-model="location" /><br/>
-						Time: <input type="text" ng-model="time" /><br/>
-						<button type="submit">Add Event</button>
+						
+							<div class="row">
+								<div class="three columns">Event Name: </div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="name" /></div>
+							</div>
+							<div class="row">
+								<div class="three columns">Location: </div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="location" /></div>
+							</div>
+							<div class="row">
+								<div class="three columns">Time: </div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="time" /></div>
+							</div>
+							<button type="submit">Add Event</button>
 					</form>
 				</div>
-		    </div>
 		</div>
 
     	<!-- Display All Events
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	    <div class="container" ng-controller="SampleCtrl">
-	    	<div class="row">
 	    		<div class="one-half column" style="margin-top: 10%">
 					<ul>
-						<li ng-repeat="event in events">
+						<li class="myborder" ng-repeat="event in events">
 							<!-- exit an event -->
-							Event Name:
-							<input type="text" ng-model="event.name" ng-change="events.$save(event)" /><br/>
-							Location:
-							<input type="text" ng-model="event.location" ng-change="events.$save(event)" /><br/>
-							Time:
-							<input type="text" ng-model="event.time" ng-change="events.$save(event)" /><br/>
+							<div class="row">
+								<div class="three columns">Event Name: </div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="event.name" ng-change="events.$save(event)" /></div>
+							</div>
+							<div class="row">
+								<div class="three columns">Location:</div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="event.location" ng-change="events.$save(event)" /></div>
+							</div>
+							<div class="row">
+								<div class="three columns">Time:</div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="event.time" ng-change="events.$save(event)" /></div>
+							</div>
 							<!-- delete event -->
-							<button class="button-primary" ng-click="events.$remove(event)"> Remove Event </button>
+
+							<button class="button-primary mymargin-bot" ng-click="events.$remove(event)"> Remove Event </button>
 						</li>
 					</ul>
 				</div>
-			</div>
 		</div>
 
 		<!-- Sample Page Layout
