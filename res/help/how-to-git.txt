@@ -1,0 +1,17 @@
+How to Push Changes to Repository
+---------------------------------
+
+// Remember to pull from repository first!
+git pull origin master
+
+// To see what changes have been made
+git status
+
+// Add all changed files to commit
+git add .
+
+// Label the commit with a message
+git commit -m "your_message"
+
+// Push your commit to the repository
+git push origin master
