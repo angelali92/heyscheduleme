@@ -16,11 +16,12 @@
 	    
 	    <!-- Links
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	    <link rel="stylesheet" type="text/css" href="css/style.css" />
 	    <link rel="stylesheet" href="css/normalize.css">
     	<link rel="stylesheet" href="css/skeleton.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 	    <link rel="icon" type="image/png" href="res/img/favicon.png">
+
 
 	    <!-- Scripts
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -47,19 +48,19 @@
 					<!-- all changes from Firebase magically appear here! -->
 					<h4>You said: {{ data.text }}</h4>
 					<ul>
-						<li ng-repeat="message in messages">
-							<!-- exit a message -->
-							<input ng-model="message.text" ng-change="messages.$save(message)" />
+						<li ng-repeat="event in events">
+							<!-- exit an event -->
+							<input type="text" ng-model="event.text" ng-change="events.$save(event)" />
 
-							<!-- delete message -->
-							<button ng-click="messages.$remove(message)">X</button>
+							<!-- delete event -->
+							<button class="button-primary" ng-click="events.$remove(event)"> X </button>
 						</li>
 					</ul>
 
-					<!-- push a new message into the array -->
-					<form ng-submit="addMessage(newMessageText)">
-						<input ng-model="newMessageText" />
-						<button type="submit">add message</button>
+					<!-- push a new event into the array -->
+					<form ng-submit="addEvent(newEventText)">
+						<input type="text" ng-model="newEventText" />
+						<button type="submit">add event</button>
 					</form>
 				</div>
 			</div>
