@@ -15,7 +15,7 @@ app.controller("SampleCtrl", function($scope, $firebase) {
 
 	$scope.checkUpcomingEvent = function() {
 		angular.forEach($scope.events, function(value, time) {
-			if ($scope.upcomingEvent.time > value.time) {
+			if (Number($scope.upcomingEvent.time) > Number(value.time)) {
 				$scope.upcomingEvent = value;
 			}
 		});
