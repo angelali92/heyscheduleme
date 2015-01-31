@@ -9,7 +9,7 @@ app.controller("SampleCtrl", function($scope, $firebase) {
 
   $scope.events = sync.$asArray();
 
-  $scope.addEvent = function(text) {
-    $scope.events.$add({text: text});
+  $scope.addEvent = function(name, location, time) {
+    $scope.events.$add({name: name, location: location, time: time});
   }
 });

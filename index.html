@@ -38,6 +38,25 @@
  <!-- Start Document
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <body>
+		<!-- Primary Page Layout
+		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<div class="container" ng-controller="SampleCtrl">
+		    <div class="row">
+			    <div class="one-half column" style="margin-top: 10%">
+			    	<h4>Hey, Schedule Me!</h4>
+			    	<p>[Implement later: Current Time / Date + Location]</p>
+			    
+				    <!-- push a new event into the array -->
+					<form ng-submit="addEvent(name, location, time)">
+						<input type="text" ng-model="name" />
+						<input type="text" ng-model="location" />
+						<input type="text" ng-model="time" />
+						<button type="submit">Add Event</button>
+					</form>
+				</div>
+		    </div>
+		</div>
+
     	<!-- Sample Angular Code
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	    <div class="container" ng-controller="SampleCtrl">
@@ -66,7 +85,7 @@
 			</div>
 		</div>
 
-		<!-- Primary Page Layout
+		<!-- Sample Page Layout
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 		<div class="container">
 		    <div class="row">
