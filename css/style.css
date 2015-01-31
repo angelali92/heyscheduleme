@@ -1,3 +1,15 @@
 ul {
 	list-style-type: none;
 }
+
+.myborder{
+	padding: 20px 25px 0px 25px;
+    border: 1px solid;
+	border-color: #D1D1D1;
+    border-radius: 15px;
+}
+
+.mymargin-bot{
+	margin-bottom: 23px;
+
+}
