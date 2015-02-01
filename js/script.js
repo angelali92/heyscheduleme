@@ -6,16 +6,17 @@ app.controller("SampleCtrl", function($scope, $firebase) {
 
 	$scope.events = sync.$asArray();
 	$scope.show = false;
-	$scope.upcomingEvent = {name: 'test', value: 'test', time: 9999};
+	$scope.upcomingEvent = {name: 'test', location: 'test', time: Date.parse('9/31/99 ,12:59:59 PM')};
 
 
-	$scope.addEvent = function(name, location, time) {
-		$scope.events.$add({name: name, location: location, time: time});
+	$scope.addEvent = function(name, location, date, time) {
+		var dateTime = Date.parse(date + ' ,' + time);
+		$scope.events.$add({name: name, location: location, time: dateTime});
 	};
 
 	$scope.checkUpcomingEvent = function() {
 		angular.forEach($scope.events, function(value, time) {
-			if (Number($scope.upcomingEvent.time) > Number(value.time)) {
+			if ($scope.upcomingEvent.time > value.time) {
 				$scope.upcomingEvent = value;
 			}
 		});
@@ -28,30 +29,30 @@ app.controller("SampleCtrl", function($scope, $firebase) {
 });
 
 app.directive("myCurrentTime", function(dateFilter){
-		return function(scope, element, attrs){
-			var format;
+	return function(scope, element, attrs){
+		var format;
 
-			scope.$watch(attrs.myCurrentTime, function(value) {
-				format = value;
-				updateTime();
-			});
+		scope.$watch(attrs.myCurrentTime, function(value) {
+			format = value;
+			updateTime();
+		});
+		
+		function updateTime(){
+			var dt = dateFilter(new Date(), format);
+			output = element.text(dt);
+			scope.dateTime = dt;
 			
-			function updateTime(){
-				var dt = dateFilter(new Date(), format);
-				output = element.text(dt);
-				scope.dateTime = dt;
-				
-				
-			}
 			
-			function updateLater() {
-				setTimeout(function() {
-				  updateTime(); // update DOM
-				  updateLater(); // schedule another update
-				}, 1000);
-			}
-			
-			updateLater();
 		}
-	});
+		
+		function updateLater() {
+			setTimeout(function() {
+			  updateTime(); // update DOM
+			  updateLater(); // schedule another update
+			}, 1000);
+		}
+		
+		updateLater();
+	}
+});
 

@@ -50,7 +50,7 @@
 				    <div class="myborder" ng-show="show">
 				    	<h3> {{ upcomingEvent.name }} </h3>
 				    	<h5> {{ upcomingEvent.location }} </h5>
-				    	{{ upcomingEvent.time }} PM<br/>
+				    	{{ upcomingEvent.time | date:format }}<br/>
 				    	<br/>
 				    </div>
 
@@ -73,7 +73,7 @@
 					
 				    <!-- push a new event into the array -->
 					
-					<form ng-submit="addEvent(name, location, time)">
+					<form ng-submit="addEvent(name, location, date, time)">
 						
 							<div class="row">
 								<div class="three columns">Event Name: </div>
@@ -82,6 +82,10 @@
 							<div class="row">
 								<div class="three columns">Location: </div>
 								<div class="nine columns"><input class="u-full-width" type="text" ng-model="location" /></div>
+							</div>
+							<div class="row">
+								<div class="three columns">Date: </div>
+								<div class="nine columns"><input class="u-full-width" type="text" ng-model="date" /></div>
 							</div>
 							<div class="row">
 								<div class="three columns">Time: </div>
@@ -109,8 +113,10 @@
 							</div>
 							<div class="row">
 								<div class="three columns">Time:</div>
-								<div class="nine columns"><input class="u-full-width" type="text" ng-model="event.time" ng-change="events.$save(event)" /></div>
-							</div>
+								<div class="nine columns">
+									{{event.time | date:format}}
+								</div>
+							</div><br/>
 							<!-- delete event -->
 
 							<button class="button-primary mymargin-bot" ng-click="events.$remove(event)"> Remove Event </button>
