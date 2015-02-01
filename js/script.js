@@ -20,6 +20,38 @@ app.controller("SampleCtrl", function($scope, $firebase) {
 			}
 		});
 		$scope.show = true;
-	};
+	};	
+
+	$scope.dateTime = "test";
+	$scope.format = 'M/d/yy h:mm:ss a';
 
 });
+
+app.directive("myCurrentTime", function(dateFilter){
+		return function(scope, element, attrs){
+			var format;
+
+			scope.$watch(attrs.myCurrentTime, function(value) {
+				format = value;
+				updateTime();
+			});
+			
+			function updateTime(){
+				var dt = dateFilter(new Date(), format);
+				output = element.text(dt);
+				scope.dateTime = dt;
+				
+				
+			}
+			
+			function updateLater() {
+				setTimeout(function() {
+				  updateTime(); // update DOM
+				  updateLater(); // schedule another update
+				}, 1000);
+			}
+			
+			updateLater();
+		}
+	});
+
